@@ -9,7 +9,7 @@ uuidv4();
 export const TodoWrapperLocalStorage = () => {
     const [todos, setTodos] = useState([])
 
-    useEffect(() => {
+    useEffect( () => {
         const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
                    setTodos(savedTodos);
     }, []);
@@ -17,8 +17,8 @@ export const TodoWrapperLocalStorage = () => {
     const addTodo = todo => {
         const newTodos = [...todos, {id: uuidv4(), task: todo, completed: false, isEditing: false}];
         setTodos(newTodos);
-        toast.sucess("Sucessfully Added!")
         localStorage.setItem('todos', JSON.stringify(newTodos));
+        toast.success("Sucessfully Added!")
     }
 
     const toggleComplete = id => {
